@@ -30,6 +30,12 @@ h1 {
 
 body {
     font-family: monospace;
+    background-color: white;
+    color: black;
+}
+.dark-mode {
+    background-color: black;
+    color: white;
 }
 
 button {
