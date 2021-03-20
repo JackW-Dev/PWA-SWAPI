@@ -1,0 +1,42 @@
+.nav_list {
+    background-color: #5f0088;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: monospace;
+}
+
+.nav_list_item {
+    float: left;
+}
+
+.nav_list_item a {
+    color: white;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav_list_item a:hover {
+    background-color: #2c0047;
+}
+
+h1 {
+    text-align: center;
+    font-family: monospace;
+}
+
+body {
+    font-family: monospace;
+}
+
+button {
+    font-family: monospace;
+}
+
+#peopleTable tr {
+    text-align: center;
+    font-family: monospace;
+}

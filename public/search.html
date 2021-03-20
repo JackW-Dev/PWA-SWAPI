@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <title>Starpedia</title>
+</head>
+
+<nav>
+    <ul class="nav_list">
+        <li class="nav_list_item"><a href="index.html">Home</a></li>
+        <li class="nav_list_item"><a href="instructions.html">How It Works</a></li>
+        <li class="nav_list_item"><a href="about.html">About Us</a></li>
+    </ul>
+</nav>
+
+<body>
+<section>
+    <h1>Search.</h1>
+
+    <table id="peopleTable">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Birth Year</th>
+        </tr>
+        </thead>
+        <tbody id="output">
+        <tr>
+            <td colspan="2">Press button to load!</td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="button" name="getPage" id="getPeoplePage">Get page 1 of characters!</button>
+    <script src="scripts/search.js"></script>
+</section>
+</body>
+</html>
