@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
     <title>Starpedia</title>
+    <script src="scripts/theme.js"></script>
 </head>
 
 <nav>
@@ -11,28 +12,50 @@
         <li class="nav_list_item"><a href="index.html">Home</a></li>
         <li class="nav_list_item"><a href="instructions.html">How It Works</a></li>
         <li class="nav_list_item"><a href="about.html">About Us</a></li>
+        <li class="nav_list_item"><a href="search.html">Search</a></li>
     </ul>
 </nav>
 
 <body>
+
 <section>
     <h1>Search.</h1>
+    <p>Use the form below to search the SWAPI database!</p>
 
-    <table id="peopleTable">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Birth Year</th>
-        </tr>
-        </thead>
-        <tbody id="output">
-        <tr>
-            <td colspan="2">Press button to load!</td>
-        </tr>
-        </tbody>
-    </table>
-    <button type="button" name="getPage" id="getPeoplePage">Get page 1 of characters!</button>
-    <script src="scripts/search.js"></script>
+    <article id="searchFormArticle">
+        <form id="searchForm">
+            <label for="searchInp">Search terms:</label>
+            <input type="search" id="searchInp" name="searchInp"
+                   placeholder="Search term here" required="required" value="">
+            <br><br>
+            <label for="searchType">Search type:</label>
+            <select id="searchType">
+                <option value="movies">Movies</option>
+                <option value="characters">Characters</option>
+                <option value="planets">Planets</option>
+                <option value="starships">Starships</option>
+            </select>
+            <br><br>
+            <button type="submit" id="searchButton">Search</button>
+            <script src="scripts/search.js"></script>
+        </form>
+    </article>
+
+    <br>
+
+    <article id="resultTableArticle">
+        <table id="resultTable" border="2">
+            <thead id="resultHeaders">
+            <tr>
+            </tr>
+            </thead>
+            <tbody id="resultBody">
+            <tr>
+            </tr>
+            </tbody>
+        </table>
+    </article>
 </section>
+
 </body>
 </html>
