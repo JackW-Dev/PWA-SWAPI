@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; user-scalable=yes">
     <link rel="stylesheet" href="styles.css">
     <title>Starpedia</title>
-    <script src="scripts/theme.js"></script>
 </head>
 
 <nav>
@@ -33,7 +33,7 @@
 <script src="scripts/index.js"></script>
 
 <script>
-    if('serviceWorker' in navigator) {
+    if("serviceWorker" in navigator) {
         navigator.serviceWorker
             .register("scripts/sw.js")
             .then(function() { console.log("Service Worker registered"); });

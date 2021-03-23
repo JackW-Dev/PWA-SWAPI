@@ -6,8 +6,8 @@ function searchAPI() {
     let searchTerm = document.getElementById("searchInp").value;
     let searchType = document.getElementById("searchType").value;
     let url;
-
-    console.log(`Search term: ${searchTerm}`);
+    let outputHead = document.getElementById("resultHeaders");
+    let outputBody = document.getElementById("resultBody");
 
     switch (searchType) {
         case "movies":
@@ -26,19 +26,26 @@ function searchAPI() {
 
     searchTerm = searchTerm.split(' ').join('+');
     url += searchTerm;
-    console.log(`URL ${url}`);
 
     fetch(url).then(response => response.json())
         .then(function (responseJson) {
-            tabulate(responseJson, searchType);
-        }).catch(error => console.log(`Error - ${error}`));
+            // If there is a response then tabulate else output no result message
+            if (responseJson.count > 0) {
+                tabulate(responseJson, searchType);
+            } else {
+                outputHead.innerHTML = "";
+                outputBody.innerHTML = "Sorry, no results found!";
+            }            
+        }).catch(error => {
+            outputHead.innerHTML = "";
+            outputBody.innerHTML = `Error - ${error}`;
+        });
 }
 
 //Function to tabulate results from SWAPI responses
 function tabulate(responseJson, searchType) {
     let outputHead = document.getElementById("resultHeaders");
     let outputBody = document.getElementById("resultBody");
-
     let headHtml = "";
     let bodyHtml = "";
 

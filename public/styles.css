@@ -1,13 +1,39 @@
+/*Light mode*/
+
+body {
+    font-family: system-monospace, monospace;
+    font-size: large;
+    background-color: #DFDFDF;
+    color: #212121;
+}
+
+#resultTable th, td {
+    border: thin solid black;
+}
+/*Dark mode*/
+
+body.dark-mode {
+    background-color: #212121;
+    color: #BDBDBD;
+}
+
+#resultTable.dark-mode th, td {
+    border: thin solid white;
+}
+
+/*Neutral*/
+
 .nav_list {
     background-color: #5f0088;
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    font-family: monospace;
+    font-family: system-monospace, monospace;
 }
 
 .nav_list_item {
+    flex: auto;
     float: left;
 }
 
@@ -25,24 +51,16 @@
 
 h1 {
     text-align: center;
-    font-family: monospace;
-}
-
-body {
-    font-family: monospace;
-    background-color: white;
-    color: black;
-}
-.dark-mode {
-    background-color: black;
-    color: white;
+    font-family: system-monospace, monospace;
 }
 
 button {
-    font-family: monospace;
+    font-family: system-monospace, monospace;
 }
 
-#resultTable tr {
+#resultTable {
     text-align: center;
-    font-family: monospace;
+    font-family: system-monospace, monospace;
+    border-collapse: collapse;
+    display: block
 }
