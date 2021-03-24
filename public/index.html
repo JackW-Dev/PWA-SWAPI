@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width; user-scalable=yes">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
     <link rel="stylesheet" href="styles.css">
     <title>Starpedia</title>
 </head>
@@ -11,7 +12,7 @@
     <ul class="nav_list">
         <li class="nav_list_item"><a href="index.html">Home</a></li>
         <li class="nav_list_item"><a href="instructions.html">How It Works</a></li>
-        <li class="nav_list_item"><a href="about.html">About Us</a></li>
+        <li class="nav_list_item"><a href="images.html">Images</a></li>
         <li class="nav_list_item"><a href="search.html">Search</a></li>
     </ul>
 </nav>
@@ -33,10 +34,11 @@
 <script src="scripts/index.js"></script>
 
 <script>
-    if("serviceWorker" in navigator) {
+    if ("serviceWorker" in navigator) {
         navigator.serviceWorker
             .register("scripts/sw.js")
-            .then(function() { console.log("Service Worker registered"); });
+            .then(function() { console.log("Service Worker registered"); })
+            .catch(error => console.log(`Error - ${error}`));
     } else {
         console.log("Service Worker failed to register");
     }

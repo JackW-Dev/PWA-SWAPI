@@ -1,5 +1,5 @@
 const CACHE_NAME = "starpedia-cache-v1";
-const urlsToCache = ["index.html","about.html", "instructions.html", "search.html",
+const urlsToCache = ["index.html","images.html", "instructions.html", "search.html",
                     "/styles.css",
                     "/scripts/index.js", "/scripts/theme.js", "/scripts/search.js"];
 
@@ -14,27 +14,17 @@ self.addEventListener("install", function(event) {
     );
 });
 
-// Intercept any network requests
-self.addEventListener("fetch", function(event) {    
-    // We have intercepted a fetch request, how should we respond?
-    // -> If we have a match for the resource in our cache, respond with it!
-    // -> Otherwise, return an "outside" fetch request for it (try to go to the network to get it)
+self.addEventListener('fetch', function(event) {
+    console.log(event.request.url);
     event.respondWith(
-        caches.match(event.request).then(function(response){
-            // Did we find a match for this request in our caches?
-            if(response){
-                // Yes, return it from the cache
-                console.log(`Returning ${event.request.url} from cache!`);
-                return response;
-            }
-            // No, so return an outside fetch request for it (go to network)
-                console.log(`Sorry, ${event.request.url} not found in cache`);
-            return fetch(event.request);
-        })
+        caches.match(event.request)
+            .then(function(response) {
+                return response || fetch(event.request); /*If in cache then return, else, go to newtwork*/
+            })
     );
 });
 
-self.addEventListener('activate', function(event) {
+self.addEventListener("activate", function(event) {
     event.waitUntil(
       caches.keys().then(function(cacheNames) {
         return Promise.all(
@@ -46,5 +36,6 @@ self.addEventListener('activate', function(event) {
         );
       })
     );
-  });
-  
+});
+
+

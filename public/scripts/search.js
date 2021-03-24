@@ -19,8 +19,14 @@ function searchAPI() {
         case "planets":
             url = "https://swapi.dev/api/planets/?search=";
             break;
+        case "species":
+            url = "https://swapi.dev/api/species/?search=";
+            break;
         case "starships":
             url = "https://swapi.dev/api/starships/?search=";
+            break;
+        case "vehicles":
+            url = "https://swapi.dev/api/vehicles/?search=";
             break;
     }
 
@@ -64,6 +70,7 @@ function tabulate(responseJson, searchType) {
 
             outputBody.innerHTML = bodyHtml;
             break;
+
         case "characters":
             headHtml += `<th>Name</th><th>Birth year</th><th>Gender</th><th>Height (Cm)</th><th>Weight (Kg)</th>`;
 
@@ -78,6 +85,7 @@ function tabulate(responseJson, searchType) {
 
             outputBody.innerHTML = bodyHtml;
             break;
+
         case "planets":
             headHtml += `<th>Name</th><th>Climate</th><th>Terrain</th>`;
             headHtml += `<th>Gravity</th><th>Rotational Period (Days)</th><th>Orbital Period (Days)</th>`;
@@ -93,10 +101,23 @@ function tabulate(responseJson, searchType) {
 
             outputBody.innerHTML = bodyHtml;
             break;
+
+        case "species":
+            headHtml += `<th>Name</th><th>Language</th><th>Average Lifespan (years)</th>`;
+
+            outputHead.innerHTML = headHtml;
+
+            for (let i = 0; i < responseJson.results.length; i++) {
+                let species = responseJson.results[i];
+                bodyHtml += `<tr><td>${species.name}</td><td>${species.language}</td><td>${species.average_lifespan}</td>`;
+            }
+
+            outputBody.innerHTML = bodyHtml;
+            break;
+
         case "starships":
             headHtml += `<th>Name</th><th>Model</th><th>Manufacturer</th>`;
             headHtml += `<th>Max speed (atmosphering)</th><th>Hyperdrive rating</th>`;
-            headHtml += `<th>Cargo capacity</th><th>Cost (credits)</th>`;
 
             outputHead.innerHTML = headHtml;
 
@@ -104,7 +125,22 @@ function tabulate(responseJson, searchType) {
                 let starship = responseJson.results[i];
                 bodyHtml += `<tr><td>${starship.name}</td><td>${starship.model}</td><td>${starship.manufacturer}</td>`;
                 bodyHtml += `<td>${starship.max_atmosphering_speed}</td><td>${starship.hyperdrive_rating}</td>`;
-                bodyHtml += `<td>${starship.cargo_capacity}</td><td>${starship.cost_in_credits}</td>`;
+            }
+
+            outputBody.innerHTML = bodyHtml;
+            break;
+
+        case "vehicles":
+            headHtml += `<th>Name</th><th>Model</th><th>Manufacturer</th>`;
+            headHtml += `<th>Max speed (atmosphering)</th><th>Vehicle Class</th>`;
+
+            outputHead.innerHTML = headHtml;
+
+            for (let i = 0; i < responseJson.results.length; i++) {
+                let vehicle = responseJson.results[i];
+                bodyHtml += `<tr><td>${vehicle.name}</td><td>${vehicle.model}</td>`;
+                bodyHtml += `<td>${vehicle.manufacturer}</td><td>${vehicle.max_atmosphering_speed}</td>`;
+                bodyHtml += `<td>${vehicle.vehicle_class}</td>`;
             }
 
             outputBody.innerHTML = bodyHtml;
