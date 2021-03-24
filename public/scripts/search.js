@@ -5,33 +5,14 @@ searchBtn.addEventListener("click", searchAPI);
 function searchAPI() {
     let searchTerm = document.getElementById("searchInp").value;
     let searchType = document.getElementById("searchType").value;
-    let url;
     let outputHead = document.getElementById("resultHeaders");
     let outputBody = document.getElementById("resultBody");
 
-    switch (searchType) {
-        case "movies":
-            url = "https://swapi.dev/api/films/?search=";
-            break;
-        case "characters":
-            url = "https://swapi.dev/api/people/?search=";
-            break;
-        case "planets":
-            url = "https://swapi.dev/api/planets/?search=";
-            break;
-        case "species":
-            url = "https://swapi.dev/api/species/?search=";
-            break;
-        case "starships":
-            url = "https://swapi.dev/api/starships/?search=";
-            break;
-        case "vehicles":
-            url = "https://swapi.dev/api/vehicles/?search=";
-            break;
-    }
+    //Build URL
 
-    searchTerm = searchTerm.split(' ').join('+');
-    url += searchTerm;
+    let url = `https://swapi.dev/api/${searchType}/?search=${searchTerm}`;
+
+    console.log(url);
 
     fetch(url).then(response => response.json())
         .then(function (responseJson) {
@@ -55,11 +36,10 @@ function tabulate(responseJson, searchType) {
     let headHtml = "";
     let bodyHtml = "";
 
+    //Each case will add the corresponding headers to the headHTML and then loop through results to populate bodyHTML
     switch (searchType) {
-        case "movies":
+        case "films":
             headHtml += `<th>Title</th><th>Episode</th><th>Director</th><th>Released</th><th>Producer(s)</th>`;
-
-            outputHead.innerHTML = headHtml;
 
             for (let i = 0; i < responseJson.results.length; i++) {
                 let movie = responseJson.results[i];
@@ -68,13 +48,12 @@ function tabulate(responseJson, searchType) {
                 bodyHtml += `<td>${movie.producer}</td></tr>`;
             }
 
+            outputHead.innerHTML = headHtml;
             outputBody.innerHTML = bodyHtml;
             break;
 
-        case "characters":
+        case "people":
             headHtml += `<th>Name</th><th>Birth year</th><th>Gender</th><th>Height (Cm)</th><th>Weight (Kg)</th>`;
-
-            outputHead.innerHTML = headHtml;
 
             for (let i = 0; i < responseJson.results.length; i++) {
                 let character = responseJson.results[i];
@@ -83,14 +62,13 @@ function tabulate(responseJson, searchType) {
                 bodyHtml += `<td>${character.mass}</td>`;
             }
 
+            outputHead.innerHTML = headHtml;
             outputBody.innerHTML = bodyHtml;
             break;
 
         case "planets":
             headHtml += `<th>Name</th><th>Climate</th><th>Terrain</th>`;
             headHtml += `<th>Gravity</th><th>Rotational Period (Days)</th><th>Orbital Period (Days)</th>`;
-
-            outputHead.innerHTML = headHtml;
 
             for (let i = 0; i < responseJson.results.length; i++) {
                 let planet = responseJson.results[i];
@@ -99,19 +77,19 @@ function tabulate(responseJson, searchType) {
                 bodyHtml += `<td>${planet.rotation_period}</td><td>${planet.orbital_period}</td>`;
             }
 
+            outputHead.innerHTML = headHtml;
             outputBody.innerHTML = bodyHtml;
             break;
 
         case "species":
             headHtml += `<th>Name</th><th>Language</th><th>Average Lifespan (years)</th>`;
 
-            outputHead.innerHTML = headHtml;
-
             for (let i = 0; i < responseJson.results.length; i++) {
                 let species = responseJson.results[i];
                 bodyHtml += `<tr><td>${species.name}</td><td>${species.language}</td><td>${species.average_lifespan}</td>`;
             }
 
+            outputHead.innerHTML = headHtml;
             outputBody.innerHTML = bodyHtml;
             break;
 
@@ -119,22 +97,19 @@ function tabulate(responseJson, searchType) {
             headHtml += `<th>Name</th><th>Model</th><th>Manufacturer</th>`;
             headHtml += `<th>Max speed (atmosphering)</th><th>Hyperdrive rating</th>`;
 
-            outputHead.innerHTML = headHtml;
-
             for (let i = 0; i < responseJson.results.length; i++) {
                 let starship = responseJson.results[i];
                 bodyHtml += `<tr><td>${starship.name}</td><td>${starship.model}</td><td>${starship.manufacturer}</td>`;
                 bodyHtml += `<td>${starship.max_atmosphering_speed}</td><td>${starship.hyperdrive_rating}</td>`;
             }
 
+            outputHead.innerHTML = headHtml;
             outputBody.innerHTML = bodyHtml;
             break;
 
         case "vehicles":
             headHtml += `<th>Name</th><th>Model</th><th>Manufacturer</th>`;
             headHtml += `<th>Max speed (atmosphering)</th><th>Vehicle Class</th>`;
-
-            outputHead.innerHTML = headHtml;
 
             for (let i = 0; i < responseJson.results.length; i++) {
                 let vehicle = responseJson.results[i];
@@ -143,6 +118,7 @@ function tabulate(responseJson, searchType) {
                 bodyHtml += `<td>${vehicle.vehicle_class}</td>`;
             }
 
+            outputHead.innerHTML = headHtml;
             outputBody.innerHTML = bodyHtml;
             break;
     }
