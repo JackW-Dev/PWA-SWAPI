@@ -9,10 +9,7 @@ function searchAPI() {
     let outputBody = document.getElementById("resultBody");
 
     //Build URL
-
     let url = `https://swapi.dev/api/${searchType}/?search=${searchTerm}`;
-
-    console.log(url);
 
     fetch(url).then(response => response.json())
         .then(function (responseJson) {

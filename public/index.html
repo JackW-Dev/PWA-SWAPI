@@ -4,7 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <meta name="Home page" content="Welcome to Starpedia: The Star Wars Encyclopedia!
+            This is a SWAPI powered web app that aims to provide information on Star Wars.">
+
     <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" href="images/favicon.ico">
+    <link rel="manifest" href="webmanifest.json">
+
     <title>Starpedia</title>
 </head>
 
@@ -36,7 +42,7 @@
 <script>
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker
-            .register("scripts/sw.js")
+            .register("sw.js")
             .then(function() { console.log("Service Worker registered"); })
             .catch(error => console.log(`Error - ${error}`));
     } else {

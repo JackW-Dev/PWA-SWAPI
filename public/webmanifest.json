@@ -1,0 +1,21 @@
+{
+  "short_name": "Starpedia",
+  "name": "Starpedia: The Star Wars Encyclopedia",
+  "icons": [{
+    "src": "/images/death-star-192x192.png",
+    "type": "image/png",
+    "sizes": "192x192",
+    "purpose": "any maskable"
+  },
+    {
+      "src": "/images/death-star-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }],
+  "start_url": "/index.html",
+  "background_color": "#d6d2c4",
+  "theme_color": "#000000",
+  "display": "minimal-ui",
+  "scope": "/"
+}
