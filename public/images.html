@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes">
-    <meta name="Favourite images" content="This page is where we will show you our favourite Star Wars images!">
+    <meta name="theme-color" content="#000000"/>
+    <meta name="description" content="This page is where we will show you our favourite Star Wars images!">
 
     <link rel="stylesheet" href="styles.css">
     <link rel="apple-touch-icon" href="images/favicon.ico">
@@ -12,7 +13,7 @@
     <script src="scripts/theme.js"></script>
 </head>
 
-<nav>
+<nav role="navigation">
     <ul class="nav_list">
         <li class="nav_list_item"><a href="index.html">Home</a></li>
         <li class="nav_list_item"><a href="instructions.html">How It Works</a></li>
@@ -21,10 +22,51 @@
     </ul>
 </nav>
 
-<body>
+<body role="main">
+
 <section>
     <h1>Our Favourite Images</h1>
 
+    <figure>
+        <picture>
+            <source srcset="images/Admiral-Akbar-2400x1600.jpg" media="(min-width:2400px)">
+            <source srcset="images/Admiral-Akbar-1200x800.jpg" media="(min-width:1200px)">
+            <source srcset="images/Admiral-Akbar-600x600.jpg" media="(min-width:600px)">
+            <source srcset="images/Admiral-Akbar-300x200.jpg" media="(min-width:300px)">
+            <img src="images/Admiral-Akbar-300x300.jpg" alt="Admiral Akbar taken by Brian McGowan">
+        </picture>
+
+        <figcaption>Photo by <a href="https://unsplash.com/@sushioutlaw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Brian McGowan</a> on
+            <a href="/s/photos/r2-d2?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></figcaption>
+    </figure>
+
+    <figure>
+        <picture>
+            <source srcset="images/c3po-2400x1600.jpg" media="(min-width:2400px)">
+            <source srcset="images/c3po-1200x800.jpg" media="(min-width:1200px)">
+            <source srcset="images/c3po-600x600.jpg" media="(min-width:600px)">
+            <source srcset="images/c3po-300x300.jpg" media="(min-width:300px)">
+            <img src="images/c3po-300x300.jpg" alt="C3PO taken by Lyman Gerona">
+        </picture>
+
+        <figcaption>Photo by <a href="https://unsplash.com/@lhgerona?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Lyman Gerona</a> on
+            <a href="/s/photos/c3po?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></figcaption>
+    </figure>
+
+    <figure>
+        <picture>
+            <source srcset="images/storm-trooper-2400x1600.jpg" media="(min-width:2400px)">
+            <source srcset="images/storm-trooper-1200x800.jpg" media="(min-width:1200px)">
+            <source srcset="images/storm-trooper-600x400.jpg" media="(min-width:600px)">
+            <source srcset="images/storm-trooper-300x300.jpg" media="(min-width:300px)">
+            <img src="images/storm-trooper-300x300.jpg" alt="Storm Troopers taken by Brian McGowan">
+        </picture>
+
+        <figcaption>Photo by <a href="https://unsplash.com/@sushioutlaw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Brian McGowan</a> on
+            <a href="/s/photos/r2-d2?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></figcaption>
+    </figure>
+
 </section>
+
 </body>
 </html>
