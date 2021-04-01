@@ -19,11 +19,12 @@ function searchAPI() {
             } else {
                 outputHead.innerHTML = "";
                 outputBody.innerHTML = "Sorry, no results found!";
-            }            
+            }
         }).catch(error => {
-            outputHead.innerHTML = "";
-            outputBody.innerHTML = `Error - ${error}`;
-        });
+        outputHead.innerHTML = "";
+        outputBody.innerHTML = "Unable to search currently, please check your network and try again.";
+        //console.log(`Error is ${error}`);
+    });
 }
 
 //Function to tabulate results from SWAPI responses
@@ -120,3 +121,4 @@ function tabulate(responseJson, searchType) {
             break;
     }
 }
+

@@ -8,7 +8,7 @@ function initialiseButton() {
         if (localStorage.getItem("theme") === "dark") {
             themeBtn.innerText = "Become a Jedi, join the light side.";
             document.body.classList.toggle("dark-mode");
-        } else  {
+        } else {
             themeBtn.innerText = "Be a Sith lord, join the dark side.";
         }
     } else {
@@ -39,3 +39,4 @@ function themeChanger() {
     }
     document.body.classList.toggle("dark-mode");
 }
+

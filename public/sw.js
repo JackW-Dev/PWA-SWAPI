@@ -1,39 +1,41 @@
 const CACHE_NAME = "starpedia-cache-v1";
 const urlsToCache = ["index.html", "instructions.html", "images.html", "search.html",
-                    "/styles.css",
-                    "/scripts/index.js", "/scripts/theme.js", "/scripts/search.js",
-                    "/images/death-star-192x192.png", "images/death-star-512x512.png"];
+    "/styles.css",
+    "/scripts/index.js", "/scripts/theme.js", "/scripts/search.js",
+    "/images/death-star-192x192.png", "images/death-star-512x512.png"
+];
 
-self.addEventListener("install", function(event) {
+self.addEventListener("install", function (event) {
     //Perform install steps
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(function(cache) {
+            .then(function (cache) {
                 return cache.addAll(urlsToCache);
             })
     );
 });
 
-self.addEventListener("fetch", function(event) {
+self.addEventListener("fetch", function (event) {
     event.respondWith(
         caches.match(event.request)
-            .then(function(response) {
+            .then(function (response) {
                 //If in cache then return, else, go to network
                 return response || fetch(event.request);
             })
     );
 });
 
-self.addEventListener("activate", function(event) {
+self.addEventListener("activate", function (event) {
     event.waitUntil(
-      caches.keys().then(function(cacheNames) {
-        return Promise.all(
-          cacheNames.map(function(cacheName) {
-            if (cacheName.startsWith("starpedia-cache-") && CACHE_NAME !== cacheName) {
-              return caches.delete(cacheName);
-            }
-          })
-        );
-      })
+        caches.keys().then(function (cacheNames) {
+            return Promise.all(
+                cacheNames.map(function (cacheName) {
+                    if (cacheName.startsWith("starpedia-cache-") && CACHE_NAME !== cacheName) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
     );
 });
+
