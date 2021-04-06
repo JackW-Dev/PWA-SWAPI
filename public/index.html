@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes">
-    <meta name="theme-color" content="#000000"/>
+    <link rel="manifest" href="webmanifest.json">
+    <!--Meta tags for browsers that don't support web manifest -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Starpedia">
+    <meta name="apple-mobile-web-app-title" content="Starpedia">
+    <meta name="theme-color" content="#000000">
+    <meta name="msapplication-navbutton-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/index.html">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/death-star-512x512.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/death-star-192x192.png">
+    <link rel="apple-touch-icon" href="images/favicon.ico">
+    <!--Meta tags for browsers that don't support web manifest -->
     <meta name="description" content="Welcome to Starpedia: The Star Wars Encyclopedia!
          This is a SWAPI powered web app that aims to provide information on Star Wars.">
     <link rel="stylesheet" href="styles.css">
-    <link rel="apple-touch-icon" href="images/favicon.ico">
-    <link rel="manifest" href="webmanifest.json">
     <title>Starpedia</title>
 </head>
 <nav role="navigation">
@@ -19,6 +31,7 @@
         <li class="nav_list_item"><a href="search.html">Search</a></li>
     </ul>
 </nav>
+
 <body>
 <section>
     <h1>Welcome to Starpedia!</h1>
@@ -38,22 +51,21 @@
     <p>We want to know what you like about Star Wars! Please consider using the form below to tell us more!</p>
     <form id="infoForm">
         <label for="nameInp">Name:</label>
-        <input id="nameInp" required="required" placeholder="Your name" type="text"
-               minlength="3" maxlength="50" pattern="^[a-z ,.'-]+$"/> <!--Regex will validate name field-->
-        <br/>
-        <br/>
+        <input id="nameInp" required="required" placeholder="Your name" type="text" minlength="3" maxlength="50" pattern="^[a-z ,.'-]+$" />
+        <!--Regex will validate name field-->
+        <br />
+        <br />
         <label for="emailInp">Email:</label>
-        <input id="emailInp" required="required" placeholder="Your email" type="email"
-               autocomplete="email"/>
-        <br/>
-        <br/>
+        <input id="emailInp" required="required" placeholder="Your email" type="email" autocomplete="email" />
+        <br />
+        <br />
         <label for="sideInp">Which side are you:</label>
         <select id="sideInp">
             <option value="jedi">Jedi</option>
             <option value="sith">Sith</option>
         </select>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <p>What is your favourite colour lightsaber:</p>
         <input id="red" type="radio" name="lightsaberColour" value="red" checked="checked" class="radioBtns">
         <label for="red">Red</label><br>
@@ -65,8 +77,8 @@
         <label for="purple">Purple</label><br>
         <input id="yellowOrange" type="radio" name="lightsaberColour" value="yellowOrange" class="radioBtns">
         <label for="yellowOrange">Yellow/Orange</label><br>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <button id="userSurveyButton" type="button" name="userSurveyButton">Submit</button>
     </form>
 </section>
@@ -76,11 +88,14 @@
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker
             .register("sw.js")
-            .then(function() { console.log("Service Worker registered"); })
+            .then(function() {
+                console.log("Service Worker registered");
+            })
             .catch(error => console.log(`Error - ${error}`));
     } else {
         console.log("Service Worker failed to register");
     }
 </script>
 </body>
+
 </html>

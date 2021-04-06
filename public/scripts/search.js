@@ -7,9 +7,12 @@ function searchAPI() {
     let searchType = document.getElementById("searchType").value;
     let outputHead = document.getElementById("resultHeaders");
     let outputBody = document.getElementById("resultBody");
+    let offlineImg = document.getElementById("offline_img");
 
     //Build URL
     let url = `https://swapi.dev/api/${searchType}/?search=${searchTerm}`;
+
+    offlineImg.hidden = true;
 
     fetch(url).then(response => response.json())
         .then(function (responseJson) {
@@ -23,6 +26,7 @@ function searchAPI() {
         }).catch(error => {
         outputHead.innerHTML = "";
         outputBody.innerHTML = "Unable to search currently, please check your network and try again.";
+        offlineImg.hidden = false;
         //console.log(`Error is ${error}`);
     });
 }

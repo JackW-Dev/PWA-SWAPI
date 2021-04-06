@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes">
-    <meta name="theme-color" content="#000000"/>
     <meta name="description" content="This is the search page. Here you are able to search SWAPI and see the
          results of your search in a table format. The form on this page will allow you to filter your search to find information
          on specific aspects of the Star Wars universe (within reason).">
     <link rel="stylesheet" href="styles.css">
-    <link rel="apple-touch-icon" href="images/favicon.ico">
     <title>Starpedia</title>
 </head>
 <nav role="navigation">
@@ -19,6 +18,7 @@
         <li class="nav_list_item"><a href="search.html">Search</a></li>
     </ul>
 </nav>
+
 <body>
 <section>
     <h1>Search.</h1>
@@ -26,10 +26,9 @@
     <article id="searchFormArticle">
         <form id="searchForm">
             <label for="searchInp">Search terms:</label>
-            <input type="search" id="searchInp" name="searchInp"
-                   placeholder="Search term here" required="required" value="">
-            <br/>
-            <br/>
+            <input type="search" id="searchInp" name="searchInp" placeholder="Search term here" required="required" value="">
+            <br />
+            <br />
             <label for="searchType">Search type:</label>
             <select id="searchType">
                 <option value="films">Movies</option>
@@ -39,13 +38,16 @@
                 <option value="starships">Starships</option>
                 <option value="vehicles">Vehicles</option>
             </select>
-            <br/>
-            <br/>
+            <br />
+            <br />
             <button type="button" id="searchButton">Search</button>
             <script src="scripts/search.js"></script>
         </form>
     </article>
     <br>
+
+    <img id="offline_img" src="images/tuscan-raider.gif" alt="Tuscan Raider gif" hidden="hidden" />
+
     <article id="resultTableArticle">
         <table id="resultTable">
             <thead id="resultHeaders">
@@ -61,5 +63,5 @@
 </section>
 <script src="scripts/theme.js"></script>
 </body>
-</html>
 
+</html>

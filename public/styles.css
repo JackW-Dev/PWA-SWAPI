@@ -66,6 +66,7 @@ button {
     border-collapse: collapse;
     display: block;
     overflow: auto;
+    width: 100%;
 }
 
 a {
