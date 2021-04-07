@@ -7,22 +7,47 @@ body {
     color: #000000;
 }
 
-body th, body td {
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #aaaaaa;
+}
+
+th, td {
     border: medium solid #000000;
 }
 
+tr:nth-child(odd) {
+    background: #b3afaa;
+}
+
+tr:hover {background-color: #eae8e2;}
+
 /*Dark mode*/
 
-body.dark-mode {
+.dark-mode {
     background-color: #000000;
     color: #d6d2c4;
 }
 
-body.dark-mode th, body.dark-mode td {
+.dark-mode th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #181818;
+}
+
+.dark-mode th, .dark-mode td {
     border: medium solid #d6d2c4;
 }
 
-body.dark-theme img {
+.dark-mode tr:nth-child(odd) {
+    background: #2a2a2a;
+}
+
+.dark-mode tr:hover {background-color: #3e3c3c;}
+
+/*Reduce brightness and increase contrast when in dark mode*/
+.dark-mode img {
     filter: brightness(.8) contrast(1.2);
 }
 
