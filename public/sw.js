@@ -1,21 +1,31 @@
 const CACHE_NAME = "starpedia-cache-v1";
-const urlsToCache = ["index.html", "instructions.html", "images.html", "search.html",
+
+const fullCache = ["index.html", "instructions.html", "images.html", "search.html",
     "/styles.css",
     "/scripts/index.js", "/scripts/theme.js", "/scripts/search.js",
     "images/death-star-192x192.png", "images/death-star-512x512.png",
     "images/admiral-akbar/landscape/admiral-akbar-2400x1600.webp", "images/admiral-akbar/landscape/admiral-akbar-2400x1600.jpg",
     "images/admiral-akbar/landscape/admiral-akbar-1200x800.webp", "images/admiral-akbar/landscape/admiral-akbar-1200x800.jpg",
     "images/admiral-akbar/square/admiral-akbar-800x800.webp", "images/admiral-akbar/square/admiral-akbar-800x800.jpg",
-    "images/admiral-akbar/square/admiral-akbar-400x400.webp", "images/admiral-akbar/square/admiral-akbar-400x400.jpg",
+    "images/admiral-akbar/portrait/admiral-akbar-400x533.webp", "images/admiral-akbar/portrait/admiral-akbar-400x533.jpg",
+    "images/admiral-akbar/square/admiral-akbar-400x400.jpg",
     "images/c3po/landscape/c3po-2400x1600.webp", "images/c3po/landscape/c3po-2400x1600.jpg",
     "images/c3po/landscape/c3po-1200x800.webp", "images/c3po/landscape/c3po-1200x800.jpg",
     "images/c3po/square/c3po-800x800.webp", "images/c3po/square/c3po-800x800.jpg",
-    "images/c3po/square/c3po-400x400.webp", "images/c3po/square/c3po-400x400.jpg",
+    "images/c3po/portrait/c3po-400x533.webp", "images/c3po/portrait/c3po-400x533.jpg",
+    "images/c3po/square/c3po-400x400.jpg",
     "images/storm-trooper/landscape/storm-trooper-2400x1600.webp", "images/storm-trooper/landscape/storm-trooper-2400x1600.jpg",
     "images/storm-trooper/landscape/storm-trooper-1200x800.webp", "images/storm-trooper/landscape/storm-trooper-1200x800.jpg",
     "images/storm-trooper/square/storm-trooper-800x800.webp", "images/storm-trooper/square/storm-trooper-800x800.jpg",
-    "images/storm-trooper/square/storm-trooper-400x400.webp", "images/storm-trooper/square/storm-trooper-400x400.jpg",
+    "images/storm-trooper/portrait/storm-trooper-400x533.webp", "images/storm-trooper/portrait/storm-trooper-400x533.jpg",
+    "images/storm-trooper/square/storm-trooper-400x400.jpg",
     "images/tuscan-raider.gif"
+];
+
+const smallCache = ["index.html", "instructions.html", "images.html", "search.html",
+    "/styles.css",
+    "/scripts/index.js", "/scripts/theme.js", "/scripts/search.js",
+    "images/death-star-192x192.png", "images/death-star-512x512.png"
 ];
 
 self.addEventListener("install", function(event) {
@@ -23,7 +33,7 @@ self.addEventListener("install", function(event) {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(function(cache) {
-                return cache.addAll(urlsToCache);
+                return cache.addAll(fullCache);
             })
     );
 });
@@ -50,3 +60,14 @@ self.addEventListener("activate", function(event) {
         })
     );
 });
+
+//Connection will be equal to the suitable connection type
+const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+let type = connection.effectiveType;
+
+function connectionChanged() {
+    console.log("Connection type changed from " + type + " to " + connection.effectiveType);
+    type = connection.effectiveType;
+}
+
+connection.addEventListener("change", connectionChanged);

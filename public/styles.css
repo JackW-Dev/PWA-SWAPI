@@ -2,116 +2,173 @@
 
 body {
     font-family: system-monospace, monospace;
+    /*Set font to monospace, using system monospace as default*/
     font-size: large;
+    /*Set font size to large*/
     background-color: #d6d2c4;
+    /*Set background colour for site*/
     color: #000000;
+    /*Set text colour for site*/
 }
 
 th {
     padding-top: 12px;
+    /*Set padding for table headers to keep them centered*/
     padding-bottom: 12px;
+    /*Set padding for table headers to keep them centered*/
     background-color: #aaaaaa;
+    /*Set background colour table header*/
 }
 
 th,
 td {
     border: medium solid #000000;
+    /*Set border colour for table*/
 }
 
 tr:nth-child(odd) {
     background: #b3afaa;
+    /*Set background colour for odd items in table*/
 }
 
 tr:hover {
     background-color: #eae8e2;
+    /*Set background colour of item in nav bar when hovered over*/
 }
 
 /*Dark mode*/
 
 .dark-mode {
     background-color: #000000;
+    /*Set background colour for site*/
     color: #d6d2c4;
+    /*Set text colour for site*/
 }
 
 .dark-mode th {
-    padding-top: 12px;
-    padding-bottom: 12px;
     background-color: #181818;
+    /*Set background colour table header*/
 }
 
 .dark-mode th,
 .dark-mode td {
     border: medium solid #d6d2c4;
+    /*Set border colour for table*/
 }
 
 .dark-mode tr:nth-child(odd) {
     background: #2a2a2a;
+    /*Set background colour for odd items in table*/
 }
 
 .dark-mode tr:hover {
     background-color: #3e3c3c;
+    /*Set background colour of item in nav bar when hovered over*/
 }
 
-/*Reduce brightness and increase contrast when in dark mode*/
+
+.dark-mode picture,
 .dark-mode img {
     filter: brightness(.8) contrast(1.2);
+    /*Reduce brightness and increase contrast when in dark mode*/
 }
 
 /*Neutral*/
 
 .nav_list {
     background-color: #5f0088;
+    /*Set background colour of item in nav bar*/
     list-style-type: none;
     /*Remove bullets from ul*/
     margin: 0;
+    /*Removes top margin, making nav bar sit closer to the top of the window*/
     padding: 0;
+    /*Remove left padding, making nav bar content sit shoulder to shoulder for the length of the window*/
     font-family: system-monospace, monospace;
+    /*Set font to monospace, using system monospace as default*/
     display: flex;
+    /*Enables flex for all child elements*/
 }
 
 .nav_list li {
     flex: 1;
+    /*Sets the nav list to grow in proportion to the window size*/
 }
 
 .nav_list_item a {
     color: white;
+    /*Set font colour*/
     display: block;
+    /*Displays as a block, taking the whole line like a <p> tag*/
     text-align: center;
+    /*Align text to the center of the cell*/
     padding: 14px 16px;
+    /*Add padding to the item to provide a bigger touch target*/
     text-decoration: none;
+    /*Remove hyperlink styling*/
 }
 
 .nav_list_item a:hover {
     background-color: #2c0047;
+    /*Set background colour of item in nav bar when hovered over*/
 }
 
 h1 {
     text-align: center;
+    /*Align text to the center of the display*/
 }
 
 button {
     font-family: system-monospace, monospace;
+    /*Set font to monospace, using system monospace as default*/
 }
 
 #resultTable {
     text-align: center;
+    /*Align text to the center of the cell*/
     border-collapse: collapse;
+    /*Collapse borders to overlap into one border (appear more like a table in word)*/
     display: block;
+    /*Displays as a block, taking the whole line like a <p> tag*/
     overflow: auto;
-    width: 100%;
+    /*Auto will add a scrollbar to the table when necessary*/
 }
 
 a {
     color: inherit;
-    text-decoration: none;
+    /*Take the same colour as the surrounding elements*/
+    text-decoration: underline;
+    /*Underline the hyperlink*/
 }
 
-figure {
-    alignment: center;
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 #surveyCompleteMsg {
     display: none;
+    /*By default this will not be shown*/
+}
+
+footer {
+    font-family: system monospace, monospace;
+    width: 100%;
+    display: inline-block;
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    background: inherit;
+}
+
+footer p {
+    color: inherit;
+    /*Inherit text colour from parent (will allow light and dark mode changes*/
+    opacity: 100%;
+    font-size: large;
+    text-transform: capitalize;
+    text-align: center;
+    padding: 0;
 }
 
 /*Media Queries*/
@@ -147,7 +204,10 @@ This is being used for when screen sizes are smaller to define minimum tap targe
     and then adding even padding to up the target to 48x48*/
     .radioBtns {
         min-height: 24px;
+        /*Set min height to 24px*/
         min-width: 24px;
+        /*Set min width to 24px*/
         padding: 12px;
+        /*Set padding on each side to 12px*/
     }
 }
