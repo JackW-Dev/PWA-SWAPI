@@ -7,4 +7,3 @@ function initialiseTheme() {
         document.body.classList.toggle("dark-mode");
     }
 }
-

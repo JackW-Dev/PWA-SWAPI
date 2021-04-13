@@ -4,6 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <link rel="manifest" href="webmanifest.json">
+    <!--Meta tags for browsers that don't support web manifest -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Starpedia">
+    <meta name="apple-mobile-web-app-title" content="Starpedia">
+    <meta name="theme-color" content="#000000">
+    <meta name="msapplication-navbutton-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/index.html">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/death-star-512x512.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/death-star-192x192.png">
+    <link rel="apple-touch-icon" href="images/favicon.ico">
+    <!--Meta tags for browsers that don't support web manifest -->
     <meta name="description" content="This is the search page. Here you are able to search SWAPI and see the
          results of your search in a table format. The form on this page will allow you to filter your search to find information
          on specific aspects of the Star Wars universe (within reason).">
@@ -20,7 +34,7 @@
 </nav>
 
 <body>
-<section>
+<section id="searchSection">
     <h1>Search.</h1>
     <p>Use the form below to search the SWAPI database!</p>
     <article id="searchFormArticle">
@@ -45,9 +59,7 @@
         </form>
     </article>
     <br>
-
     <img id="offline_img" src="images/tuscan-raider.gif" alt="Tuscan Raider gif" hidden="hidden" />
-
     <article id="resultTableArticle">
         <table id="resultTable">
             <thead id="resultHeaders">
@@ -62,6 +74,18 @@
     </article>
 </section>
 <script src="scripts/theme.js"></script>
+<script>
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+            .register("sw.js")
+            .then(function() {
+                console.log("Service Worker registered");
+            })
+            .catch(error => console.log(`Error - ${error}`));
+    } else {
+        console.log("Service Worker failed to register");
+    }
+</script>
 </body>
 
 </html>

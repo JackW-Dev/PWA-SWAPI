@@ -4,6 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <link rel="manifest" href="webmanifest.json">
+    <!--Meta tags for browsers that don't support web manifest -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Starpedia">
+    <meta name="apple-mobile-web-app-title" content="Starpedia">
+    <meta name="theme-color" content="#000000">
+    <meta name="msapplication-navbutton-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/index.html">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/death-star-512x512.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/death-star-192x192.png">
+    <link rel="apple-touch-icon" href="images/favicon.ico">
+    <!--Meta tags for browsers that don't support web manifest -->
     <meta name="description" content="This page details how the web app utilises the SWAPI as a database for Star Wars information.">
     <link rel="stylesheet" href="styles.css">
     <title>Starpedia</title>
@@ -18,13 +32,41 @@
 </nav>
 
 <body>
-<section>
+<section id="infoSection">
     <h1>How does this all work?</h1>
+    <h3>Overview</h3>
     <p>We utilise SWAPI, a free, open-access API for Star Wars information!</p>
     <p>This API powers all of our searches and is the database holding all of the information that we relay to you.</p>
     <p>To use our system, please go to the <a href="search.html">search page</a> and use our search form!</p>
+    <h3>So, you want to know the technical stuff eh?</h3>
+    <p>We leverage a free use, public API known as SWAPI to serve you with search data.</p>
+    <p>This API allows us to serve you with data about:</p>
+    <ul>
+        <li>Movies</li>
+        <li>Characters</li>
+        <li>Planets</li>
+        <li>Species</li>
+        <li>Starships</li>
+        <li>Vehicles</li>
+    </ul>
+    <p>The data about each of these is limited by the API response. Put simply, we can only tell you what the API tells us.</p>
+    <p>We have filtered these responses based on what we believe users would like to see, meaning that some information will be left out of the responses in some cases.
+        We have done this to aid with the displaying of the information and to make it easier to find the information that you are looking for.</p>
+    <p>You can find out more about the API using the documentation found here: <a href="https://swapi.dev/documentation">SWAPI</a></p>
 </section>
 <script src="scripts/theme.js"></script>
+<script>
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+            .register("sw.js")
+            .then(function() {
+                console.log("Service Worker registered");
+            })
+            .catch(error => console.log(`Error - ${error}`));
+    } else {
+        console.log("Service Worker failed to register");
+    }
+</script>
 </body>
 
 </html>

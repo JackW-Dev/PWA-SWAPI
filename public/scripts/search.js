@@ -15,7 +15,7 @@ function searchAPI() {
     offlineImg.hidden = true;
 
     fetch(url).then(response => response.json())
-        .then(function (responseJson) {
+        .then(function(responseJson) {
             // If there is a response then tabulate else output no result message
             if (responseJson.count > 0) {
                 tabulate(responseJson, searchType);
@@ -23,7 +23,7 @@ function searchAPI() {
                 outputHead.innerHTML = "";
                 outputBody.innerHTML = "Sorry, no results found!";
             }
-        }).catch(error => {
+        }).catch(() => {
         outputHead.innerHTML = "";
         outputBody.innerHTML = "Unable to search currently, please check your network and try again.";
         offlineImg.hidden = false;
@@ -125,4 +125,3 @@ function tabulate(responseJson, searchType) {
             break;
     }
 }
-

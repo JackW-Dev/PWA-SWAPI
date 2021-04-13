@@ -15,32 +15,33 @@ const urlsToCache = ["index.html", "instructions.html", "images.html", "search.h
     "images/storm-trooper/landscape/storm-trooper-1200x800.webp", "images/storm-trooper/landscape/storm-trooper-1200x800.jpg",
     "images/storm-trooper/square/storm-trooper-800x800.webp", "images/storm-trooper/square/storm-trooper-800x800.jpg",
     "images/storm-trooper/square/storm-trooper-400x400.webp", "images/storm-trooper/square/storm-trooper-400x400.jpg",
-    "images/tuscan-raider.gif"];
+    "images/tuscan-raider.gif"
+];
 
-self.addEventListener("install", function (event) {
+self.addEventListener("install", function(event) {
     //Perform install steps
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(function (cache) {
+            .then(function(cache) {
                 return cache.addAll(urlsToCache);
             })
     );
 });
 
-self.addEventListener("fetch", function (event) {
+self.addEventListener("fetch", function(event) {
     event.respondWith(
-        caches.match(event.request).then(function (response) {
-                //If in cache then return, else, go to network
-                return response || fetch(event.request);
-            })
+        caches.match(event.request).then(function(response) {
+            //If in cache then return, else, go to network
+            return response || fetch(event.request);
+        })
     );
 });
 
-self.addEventListener("activate", function (event) {
+self.addEventListener("activate", function(event) {
     event.waitUntil(
-        caches.keys().then(function (cacheNames) {
+        caches.keys().then(function(cacheNames) {
             return Promise.all(
-                cacheNames.map(function (cacheName) {
+                cacheNames.map(function(cacheName) {
                     if (cacheName.startsWith("starpedia-cache-") && CACHE_NAME !== cacheName) {
                         return caches.delete(cacheName);
                     }

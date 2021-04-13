@@ -33,7 +33,7 @@
 </nav>
 
 <body>
-<section>
+<section id="welcomeSection">
     <h1>Welcome to Starpedia!</h1>
     <p>Wyaaaaaa (hello in Wookie) to Starpedia, a SWAPI powered Star Wars data site!</p>
     <p>On this site you can:</p>
@@ -46,12 +46,12 @@
         <li><a href="search.html">Search Vehicles</a></li>
     </ul>
 </section>
-<section>
+<section id="surveySection">
     <h1>Tell us about you!</h1>
     <p>We want to know what you like about Star Wars! Please consider using the form below to tell us more!</p>
     <form id="infoForm">
         <label for="nameInp">Name:</label>
-        <input id="nameInp" required="required" placeholder="Your name" type="text" minlength="3" maxlength="50" pattern="^[a-z ,.'-]+$" />
+        <input id="nameInp" required="required" placeholder="Your name" type="text" minlength="3" maxlength="50" pattern="/^[a-z ,.'-]+$/i" />
         <!--Regex will validate name field-->
         <br />
         <br />
@@ -67,20 +67,21 @@
         <br />
         <br />
         <p>What is your favourite colour lightsaber:</p>
-        <input id="red" type="radio" name="lightsaberColour" value="red" checked="checked" class="radioBtns">
+        <input id="red" type="radio" name="lightsaberColour" value="red" checked="checked" class="radioBtns" />
         <label for="red">Red</label><br>
-        <input id="blue" type="radio" name="lightsaberColour" value="blue" class="radioBtns">
+        <input id="blue" type="radio" name="lightsaberColour" value="blue" class="radioBtns" />
         <label for="blue">Blue</label><br>
-        <input id="green" type="radio" name="lightsaberColour" value="green" class="radioBtns">
+        <input id="green" type="radio" name="lightsaberColour" value="green" class="radioBtns" />
         <label for="green">Green</label><br>
-        <input id="purple" type="radio" name="lightsaberColour" value="purple" class="radioBtns">
+        <input id="purple" type="radio" name="lightsaberColour" value="purple" class="radioBtns" />
         <label for="purple">Purple</label><br>
-        <input id="yellowOrange" type="radio" name="lightsaberColour" value="yellowOrange" class="radioBtns">
+        <input id="yellowOrange" type="radio" name="lightsaberColour" value="yellowOrange" class="radioBtns" />
         <label for="yellowOrange">Yellow/Orange</label><br>
         <br />
         <br />
-        <button id="userSurveyButton" type="button" name="userSurveyButton">Submit</button>
+        <button id="userSurveyButton" type="submit" name="userSurveyButton">Submit</button>
     </form>
+    <p id="surveyCompleteMsg">Thankyou for participating in our survey!</p>
 </section>
 <button type="button" name="themeButton" id="themeBtn" value=""></button>
 <script src="scripts/index.js"></script>

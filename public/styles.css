@@ -13,7 +13,8 @@ th {
     background-color: #aaaaaa;
 }
 
-th, td {
+th,
+td {
     border: medium solid #000000;
 }
 
@@ -21,7 +22,9 @@ tr:nth-child(odd) {
     background: #b3afaa;
 }
 
-tr:hover {background-color: #eae8e2;}
+tr:hover {
+    background-color: #eae8e2;
+}
 
 /*Dark mode*/
 
@@ -36,7 +39,8 @@ tr:hover {background-color: #eae8e2;}
     background-color: #181818;
 }
 
-.dark-mode th, .dark-mode td {
+.dark-mode th,
+.dark-mode td {
     border: medium solid #d6d2c4;
 }
 
@@ -44,7 +48,9 @@ tr:hover {background-color: #eae8e2;}
     background: #2a2a2a;
 }
 
-.dark-mode tr:hover {background-color: #3e3c3c;}
+.dark-mode tr:hover {
+    background-color: #3e3c3c;
+}
 
 /*Reduce brightness and increase contrast when in dark mode*/
 .dark-mode img {
@@ -55,7 +61,8 @@ tr:hover {background-color: #eae8e2;}
 
 .nav_list {
     background-color: #5f0088;
-    list-style-type: none;  /*Remove bullets from ul*/
+    list-style-type: none;
+    /*Remove bullets from ul*/
     margin: 0;
     padding: 0;
     font-family: system-monospace, monospace;
@@ -103,20 +110,44 @@ figure {
     alignment: center;
 }
 
+#surveyCompleteMsg {
+    display: none;
+}
+
 /*Media Queries*/
 
 @media only screen and (max-width: 600px) {
     .nav_list {
-        flex-wrap: wrap;    /*Lets the menu items wrap*/
+        flex-wrap: wrap;
+        /*Lets the menu items wrap*/
     }
 
     .nav_list li {
-        flex-basis: 50%;    /*Tells the items what size to use (in this case 50% of display)*/
+        flex-basis: 50%;
+        /*Tells the items what size to use (in this case 50% of display)*/
     }
 }
 
 @media only screen and (max-width: 400px) {
     .nav_list li {
-        flex-basis: 100%;    /*Tells the items what size to use (in this case 100% of display)*/
+        flex-basis: 100%;
+        /*Tells the items what size to use (in this case 100% of display)*/
+    }
+}
+
+/*This media query will detect whether or not the pointer will have limited accuracy
+This is being used for when screen sizes are smaller to define minimum tap targets*/
+@media (pointer: coarse) {
+    button {
+        padding: .8em;
+        /*em is a size that is relative to the font size of the element*/
+    }
+
+    /*As min tap target is 48px by 48px, I am setting the min icon as 24x24
+    and then adding even padding to up the target to 48x48*/
+    .radioBtns {
+        min-height: 24px;
+        min-width: 24px;
+        padding: 12px;
     }
 }

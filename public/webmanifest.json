@@ -7,6 +7,7 @@
   "scope": "/",
   "display": "standalone",
   "theme_color": "#000000",
+  "background_color": "#d6d2c4",
   "icons": [
     {
       "src": "/images/death-star-512x512.png",
@@ -20,6 +21,5 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ],
-  "background_color": "#d6d2c4"
+  ]
 }
