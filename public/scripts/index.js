@@ -71,7 +71,7 @@ function surveySubmit() {
     console.log(`Submitted ${nameInp} -  ${emailInp} - ${sideInp} - ${lightsaberInp}`);
 
     //RegEx for a valid name (this is a 2nd stage validation method)
-    const nameRegex = /^[a-z ,.'-]+$/i;
+    const nameRegex = /^[A-Za-z ,.'-]+$/i;
 
     //Name should match regex format and be longer than 2 characters
     if (nameRegex.test(nameInp) === true && nameInp.length > 2 && nameInp.length < 51) {
@@ -97,10 +97,31 @@ function surveySubmit() {
 
         //This will not only hide the form but will also stop it from affecting the page layout
         //Visibility hidden would leave an empty space where the section was
-        document.getElementById("infoForm").style.display = "none"
-        document.getElementById("surveyCompleteMsg").style.display = "block"
+        document.getElementById("infoForm").style.display = "none";
+        document.getElementById("surveyCompleteMsg").style.display = "block";
 
+        //If share API is supported, display the share message and button where the survey was
+        if(navigator.share) {
+            document.getElementById("shareMsg").style.display = "block";
+            shareButton.style.display = "block";
+        }
     } else {
         console.log("Invalid details");
+    }
+}
+
+const shareButton = document.getElementById("shareButton");
+shareButton.addEventListener("click", share)
+
+//Function for sharing the web app
+//Check if supported again (second check just in case)
+//If supported, use the API, else, log an error
+function share() {
+    if (navigator.share) {
+        navigator.share({
+            title: "Starpedia",
+            text: "Check out Starpedia!",
+            url: "https://starpedia-pwa.web.app/index.html"
+        }).catch((error) => console.log("Error sharing", error));
     }
 }

@@ -22,12 +22,6 @@ const fullCache = ["index.html", "instructions.html", "images.html", "search.htm
     "images/tuscan-raider.gif"
 ];
 
-const smallCache = ["index.html", "instructions.html", "images.html", "search.html",
-    "/styles.css",
-    "/scripts/index.js", "/scripts/theme.js", "/scripts/search.js",
-    "images/death-star-192x192.png", "images/death-star-512x512.png"
-];
-
 self.addEventListener("install", function(event) {
     //Perform install steps
     event.waitUntil(
@@ -60,14 +54,3 @@ self.addEventListener("activate", function(event) {
         })
     );
 });
-
-//Connection will be equal to the suitable connection type
-const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-let type = connection.effectiveType;
-
-function connectionChanged() {
-    console.log("Connection type changed from " + type + " to " + connection.effectiveType);
-    type = connection.effectiveType;
-}
-
-connection.addEventListener("change", connectionChanged);

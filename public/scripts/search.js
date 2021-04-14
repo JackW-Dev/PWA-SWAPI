@@ -1,3 +1,26 @@
+//Connection will be equal to the suitable connection type
+const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+connection.addEventListener("change", connectionChanged);
+
+function connectionChanged() {
+    let networkMsg = document.getElementById("networkMessage")
+    switch(connection.effectiveType){
+        case "3g" || "4g":
+            networkMsg.style.display = "none";
+            break;
+        default:
+            networkMsg.style.display = "block";
+
+            //The API detects effectiveType as being 4g when offline. This check will detect and correct the output message.
+            if (connection.effectiveType === "4g") {
+                networkMsg.innerText = "Your currently have no internet connection.";
+            } else {
+                networkMsg.innerText = `Your connection is ${connection.effectiveType} - Results may be slower than expected.`;
+            }
+            break;
+    }
+}
+
 let searchBtn = document.getElementById("searchButton");
 searchBtn.addEventListener("click", searchAPI);
 

@@ -53,19 +53,19 @@
         <label for="nameInp">Name:</label>
         <input id="nameInp" required="required" placeholder="Your name" type="text" minlength="3" maxlength="50" pattern="/^[a-z ,.'-]+$/i" />
         <!--Regex will validate name field-->
-        <br />
-        <br />
+        <br/>
+        <br/>
         <label for="emailInp">Email:</label>
         <input id="emailInp" required="required" placeholder="Your email" type="email" autocomplete="email" />
-        <br />
-        <br />
+        <br/>
+        <br/>
         <label for="sideInp">Which side are you:</label>
         <select id="sideInp">
             <option value="jedi">Jedi</option>
             <option value="sith">Sith</option>
         </select>
-        <br />
-        <br />
+        <br/>
+        <br/>
         <p>What is your favourite colour lightsaber:</p>
         <input id="red" type="radio" name="lightsaberColour" value="red" checked="checked" class="radioBtns" />
         <label for="red">Red</label><br>
@@ -77,12 +77,15 @@
         <label for="purple">Purple</label><br>
         <input id="yellowOrange" type="radio" name="lightsaberColour" value="yellowOrange" class="radioBtns" />
         <label for="yellowOrange">Yellow/Orange</label><br>
-        <br />
-        <br />
+        <br/>
+        <br/>
         <button id="userSurveyButton" type="submit" name="userSurveyButton">Submit</button>
     </form>
     <p id="surveyCompleteMsg">Thankyou for participating in our survey!</p>
+    <p id="shareMsg">Like Starpedia? Why not help us grow!</p>
+    <button id="shareButton" type="button">Share!</button>
 </section>
+<br/>
 <button type="button" name="themeButton" id="themeBtn" value=""></button>
 <footer>
     <p>&copy 2021 - Jack Walker</p>
