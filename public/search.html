@@ -25,6 +25,7 @@
     <title>Starpedia</title>
 </head>
 
+<!--Navigation elements-->
 <nav role="navigation">
     <ul class="nav_list">
         <li class="nav_list_item"><a href="index.html">Home</a></li>
@@ -35,15 +36,19 @@
 </nav>
 
 <body>
+<!--First section is for search related items-->
 <section id="searchSection">
     <h1>Search.</h1>
     <p>Use the form below to search the SWAPI database!</p>
+
+    <!--First article is for search form-->
     <article id="searchFormArticle">
+        <p>Providing no input will search for all.</p>
         <form id="searchForm">
             <label for="searchInp">Search terms:</label>
-            <input type="search" id="searchInp" name="searchInp" placeholder="Search term here" required="required" value="">
-            <br />
-            <br />
+            <input type="search" id="searchInp" name="searchInp" placeholder="Search term here" value="">
+            <br/>
+            <br/>
             <label for="searchType">Search type:</label>
             <select id="searchType">
                 <option value="films">Movies</option>
@@ -53,15 +58,17 @@
                 <option value="starships">Starships</option>
                 <option value="vehicles">Vehicles</option>
             </select>
-            <br />
-            <br />
-            <button type="button" id="searchButton">Search</button>
-            <script src="scripts/search.js"></script>
+            <br/>
+            <br/>
+            <button type="submit" id="searchButton">Search</button>
         </form>
     </article>
+
     <br>
     <p id="networkMessage"></p>
     <img id="offline_img" src="images/tuscan-raider.gif" alt="Tuscan Raider gif" hidden="hidden" />
+
+    <!--second article is for search results-->
     <article id="resultTableArticle">
         <table id="resultTable">
             <thead id="resultHeaders">
@@ -75,10 +82,15 @@
         </table>
     </article>
 </section>
+
+<!--Copyright information in the footer-->
 <footer>
     <p>&copy 2021 - Jack Walker</p>
 </footer>
+
+<!--Scripts-->
 <script src="scripts/theme.js"></script>
+<script src="scripts/search.js"></script>
 <script>
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker
@@ -94,3 +106,4 @@
 </body>
 
 </html>
+

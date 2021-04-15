@@ -4,28 +4,30 @@ connection.addEventListener("change", connectionChanged);
 
 function connectionChanged() {
     let networkMsg = document.getElementById("networkMessage")
-    switch(connection.effectiveType){
-        case "3g" || "4g":
-            networkMsg.style.display = "none";
+    switch (connection.effectiveType) {
+        case "2g":
+            networkMsg.style.display = "block";
+            networkMsg.innerText = `Your connection is ${connection.effectiveType} - Results may be slower than expected.`;
             break;
         default:
-            networkMsg.style.display = "block";
-
-            //The API detects effectiveType as being 4g when offline. This check will detect and correct the output message.
-            if (connection.effectiveType === "4g") {
-                networkMsg.innerText = "Your currently have no internet connection.";
-            } else {
-                networkMsg.innerText = `Your connection is ${connection.effectiveType} - Results may be slower than expected.`;
-            }
+            networkMsg.style.display = "none";
             break;
     }
 }
 
-let searchBtn = document.getElementById("searchButton");
-searchBtn.addEventListener("click", searchAPI);
+
+//Listen for a submit event on the form and not a click event
+let searchForm = document.getElementById("searchForm");
+searchForm.addEventListener("submit", searchAPI);
+
+// let searchBtn = document.getElementById("searchButton");
+// searchBtn.addEventListener("click", searchAPI);
 
 //Function to search SWAPI
-function searchAPI() {
+function searchAPI(event) {
+    //Prevent the default redirect that happens on a submit event
+    event.preventDefault();
+
     let searchTerm = document.getElementById("searchInp").value;
     let searchType = document.getElementById("searchType").value;
     let outputHead = document.getElementById("resultHeaders");
