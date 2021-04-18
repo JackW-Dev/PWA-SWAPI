@@ -4,16 +4,35 @@ connection.addEventListener("change", connectionChanged);
 
 function connectionChanged() {
     let networkMsg = document.getElementById("networkMessage")
-    switch (connection.effectiveType) {
-        case "2g":
-            networkMsg.style.display = "block";
-            networkMsg.innerText = `Your connection is ${connection.effectiveType} - Results may be slower than expected.`;
-            break;
-        default:
-            networkMsg.style.display = "none";
-            break;
+
+    //If the response time is over 1000ms
+    //Speed was chosen using the effectiveType description table on https://wicg.github.io/netinfo/
+    if (connection.rtt > 1000) {
+        networkMsg.style.display = "block";
+        networkMsg.innerText = `Your connection is ${connection.effectiveType} - Results may be slower than expected.`;
+    } else if (connection.rtt === 0) {
+        networkMsg.style.display = "block";
+        networkMsg.innerText = `You currently have no connection. If this does not change, your search will return no results.`;
+    } else {
+        networkMsg.style.display = "none";
     }
 }
+
+//This is the older implementation of this function.
+//When network was disabled, type was detected as 4g. The above implementation handles this issue in a slightly different way.
+// function connectionChanged() {
+//     let networkMsg = document.getElementById("networkMessage")
+//     switch (connection.effectiveType) {
+//         case "2g":
+//             networkMsg.style.display = "block";
+//             networkMsg.innerText = `Your connection is ${connection.effectiveType} - Results may be slower than expected.`;
+//             break;
+//         default:
+//             networkMsg.style.display = "none";
+//             break;
+//     }
+// }
+
 
 
 //Listen for a submit event on the form and not a click event
