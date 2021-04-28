@@ -174,7 +174,7 @@ form {
     /*Apply margins automatically to center the form*/
 }
 
-#surveyComplete {
+#surveyCompleteMsg {
     display: none;
     /*By default this will not be shown*/
 }

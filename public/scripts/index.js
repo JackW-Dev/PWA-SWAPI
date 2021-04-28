@@ -59,11 +59,10 @@ function initialiseSurvey() {
 //Without the preventDefault, the submission will work but will alter the URL
 //Due to this, a listener is applied on the button instead of the form
 //HTML5 validation is still carried out on the form
-// let surveyForm = document.getElementById("infoForm");
-// surveyForm.addEventListener("submit", surveySubmit);
-
-const surveyBtn = document.getElementById("userSurveyButton");
-surveyBtn.addEventListener("click", surveySubmit);
+let surveyForm = document.getElementById("infoForm");
+//By adding the listener to the form and not the button, the function is only called
+//when the HTML5 validation is all passed successfully
+surveyForm.addEventListener("submit", surveySubmit);
 
 //Function for submitting the user survey
 //This function contains JavaScript validation also, however, it has been commented out as HTML5 will do this
